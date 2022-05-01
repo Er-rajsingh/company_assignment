@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AbleJob - SignUp</title>
+    <link rel="stylesheet" href="../static/css/signup.css">
+    <link rel="stylesheet" href="../static/css/navbar.css">
+</head>
+
+<body>
+    <ul>
+        <li style="float: left;">
+            <a href="#">
+                <b>Able Jobs</b>
+            </a>
+        </li>
+        {% if 'username' in session %}
+        <li><a href="#"><strong>Hi, {{ session['username'] }}</strong></a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        {% else %}
+        <li><a class="active" href="{{ url_for('register') }}">Register</a></li>
+        <li><a href="{{ url_for('login') }}">Login</a></li>
+        {% endif %}
+        <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+        <li><a href="{{ url_for('form') }}">Add New Job</a></li>
+        <li><a href="{{ url_for('index') }}">Home</a></li>
+    </ul>
+    <div class="main">
+        <form action="{{ url_for('register') }}" method="POST">
+            <div class="imgcontainer">
+                <img src="../static/img/avatar.jpg" alt="Avatar" class="avatar">
+            </div>
+
+            <div class="container">
+                <label for="uname"><b>Email</b></label>
+                <input type="text" placeholder="Enter Email" name="email" required>
+                <label for="username"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="username" required>
+
+                <label for="password"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="password" required>
+
+                <label for="psw"><b>Re-Enter Password</b></label>
+                <input type="password" placeholder="Re-Enter Password" name="psw" required>
+
+                <button type="submit">Register</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

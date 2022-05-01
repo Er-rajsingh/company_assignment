@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AbleJob - Job Post</title>
+    <link rel="stylesheet" href="../static/css/form.css">
+    <link rel="stylesheet" href="../static/css/navbar.css">
+</head>
+
+<body>
+    <ul>
+        <li style="float: left;">
+            <a href="#">
+                <b>Able Jobs</b>
+            </a>
+        </li>
+        {% if 'username' in session %}
+        <li><a href="#"><strong>Hi, {{ session['username'] }}</strong></a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        {% else %}
+        <li><a href="{{ url_for('register') }}">Register</a></li>
+        <li><a href="{{ url_for('login') }}">Login</a></li>
+        {% endif %}
+        <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+        <li><a class="active" href="{{ url_for('form') }}">Add New Job</a></li>
+        <li><a href="{{ url_for('index') }}">Home</a></li>
+    </ul>
+    <div class="container">
+        <div class="left">
+            <div class="paragraph">
+                <h4>Fill the details related to opening and tap on Submit Button</h4>
+            </div>
+            <img src="../static/img/job_background.jpg" alt="">
+        </div>
+        <div class="right ">
+            <form action="{{ url_for('requirement') }}" method="POST">
+                <div class="content-description">
+                    <label for="role ">Job Role*:</label>
+                    <select id="role " class="form-area" name="role">
+                        <option selected>Select Job Role</option>
+                        <option value = "Bussiness Development Executive">Bussiness Development Executive</option>
+                        <option value = "Customer Support Voice">Customer Support Voice</option>
+                        <option value = "Inside Sales">Inside Sales</option>
+                        <option value = "Content Writing">Content Writing</option>
+                        <option value = "Digital Marketing">Digital Marketing</option>
+                        <option value = "Cloud Computing">Cloud Computing</option>
+                        <option value = "Community Management">Community Management</option>
+                        <option value = "Devops Engineer">Devops Engineer</option>
+                    </select>
+                </div>
+                <div class="content-description ">
+                    <label for="description">Job Description*:</label>
+                    <textarea name="description" class="form-area" cols="50" rows="10" placeholder="Enter the Job Description "></textarea>
+                </div>
+                <div class="content-description ">
+                    <label for="work">Place of Work*:</label>
+                    <input name="work" type="text" class="form-area" placeholder="Enter Job Location ">
+                </div>
+                <div class="content-description ">
+                    <label for="phone">Phone Number For Coordination*:</label>
+                    <input name="phone" type="text" class="form-area" placeholder="Phone Number">
+                </div>
+                <div class="content-description">
+                    <input type="submit" name="Submit Form">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
